@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
+    <link rel="icon" href="./favicon.ico" type="image/x-icon">
+    <link rel="manifest" href="./manifest.json">
+    <title>Zer@Dengue</title>
+    <link rel="stylesheet" type="text/css" href="./asserts/lib/bootstrap/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="./asserts/lib/fontawesome/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    
+    <link rel="stylesheet" type="text/css" href="./asserts/css/site.css">
+</head>
+
+<body>
+    <section class="container-fluid h-100">
+        <article class="row h-100 pt-3 pb-3 d-flex justify-content-center ">
+            <form class="col-10 pb-3 pt-3 rounded shadow bg-white">
+                <h3 class="text-center mb-4">Zer@Dengue</h3>
+
+                <div class="bd-example bd-example-tabs">
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
+                                aria-controls="home" aria-selected="true">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="denuncia-tab" data-toggle="tab" href="#denuncia" role="tab"
+                                aria-controls="denuncia" aria-selected="false">Denúncia</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="mosquito-tab" data-toggle="tab" href="#mosquito" role="tab"
+                                aria-controls="mosquito" aria-selected="false">O Mosquito</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="sintomas-tab" data-toggle="tab" href="#sintomas" role="tab"
+                                aria-controls="sintomas" aria-selected="false">Sintomas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="cadastro-tab" data-toggle="tab" href="#cadastro" role="tab"
+                                aria-controls="cadastro" aria-selected="false">Alterar Cadastro</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="sair-tab" data-toggle="tab" href="#sair" role="tab"
+                                aria-controls="sair" aria-selected="false" onclick="sair();">Sair</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="myTabContent">
+                        <!--Tab Home-->
+                        <div class="tab-pane fade active show" id="home" role="tabpanel" aria-labelledby="home-tab">
+
+                            <div class="card-deck pt-3">
+                                <div class="card">
+                                    <img class="cursor" src="./asserts/img/foco.png" onclick="SelecionarTabDenuncia()"
+                                        class="card-img-top" alt="foco">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Faça sua denúncia!</h5>
+                                        <p class="card-text">Clique aqui para informar o local com foco do mosquito
+                                            aedes aegypti.</p>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <img class="cursor" src="./asserts/img/mosquito.png"
+                                        onclick="SelecionarTabMosquito()" class="card-img-top" alt="mosquito">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Mosquito aedes aegypti</h5>
+                                        <p class="card-text">Clique aqui para obter maiores informações sobre o
+                                            mosquito.</p>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <img class="cursor" src="./asserts/img/sintomas.png"
+                                        onclick="SelecionarTabSintomas()" class="card-img-top" alt="sintomas">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Sintomas da dengue</h5>
+                                        <p class="card-text">Clique aqui para obter maiores informações sobre a doença.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!--Tab Denúncia-->
+                        <div class="tab-pane fade" id="denuncia" role="tabpanel" aria-labelledby="denuncia-tab">
+                            <div class="tab-pane fade active show" id="denuncia" role="tabpanel"
+                                aria-labelledby="denuncia-tab">
+
+                                <div class="form-group pt-3 ">
+                                    <label for="enderecoOcorrencia">Endereço da Ocorrência</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text bg-white border-right-0"><i
+                                                    class="fas fa-map-marker-alt"></i></span>
+                                        </div>
+                                        <input type="enderecoOcorrencia" class="form-control border-left-0"
+                                            id="enderecoOcorrencia" placeholder="Insira o endereço da ocorrência">
+                                    </div>
+                                </div>
+
+                                <div class="input-group">
+                                    <label for="selecionarFoto">Foto do local do foco de dengue</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text bg-white border-right-0"><i
+                                                    class="fas fa-camera"></i></span>
+                                        </div>
+
+
+                                        <div class="custom-file">
+                                            <input type="file" value="Upload" class="custom-file-input"
+                                                onchange="trocarImagemFocoDengue();" id="arquivoImagemFocoDengue">
+                                            <label class="custom-file-label border-left-0"
+                                                for="arquivoImagemFocoDengue"></label>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="progress">
+                                    <div id="progressUploader" class="progress-bar" role="progressbar" aria-valuenow="0"
+                                        aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                <div>
+                                    <img src="./asserts/img/semFoto.png" alt="Foco da dengue" class="img-thumbnail"
+                                        id="imagemFocoDengue" style="height: 200px">
+                                </div>
+
+                                <div class="form-group pt-3 ">
+                                    <label for="descricao">Descrição do local do foco de dengue
+                                    </label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text bg-white border-right-0"><i
+                                                    class="fas fa-sticky-note"></i></span>
+                                        </div>
+                                        <textarea class="form-control border-left-0" aria-label="With textarea"
+                                            id="descricaoOcorrencia"
+                                            placeholder="Insira um relato sobre o local"></textarea>
+                                    </div>
+                                </div>
+
+                                <button type="button" onclick="salvarDenuncia()" class="btn btn-primary"
+                                    id="gravarDenuncia">Gravar</button>
+
+                            </div>
+                        </div>
+
+                        <!--Tab O Mosquito-->
+                        <div class="tab-pane fade" id="mosquito" role="tabpanel" aria-labelledby="mosquito-tab">
+                            <div class="tab-pane fade active show" id="mosquito" role="tabpanel"
+                                aria-labelledby="mosquito-tab">
+
+                                <article>
+                                    <h4 class="pt-3">Mosquito - Aedes aegypti</h4>
+                                    <h5>O Mosquito</h5>
+                                    <p><strong>Aedes aegypti</strong> é o mosquito transmissor da dengue e da febre
+                                        amarela urbana. Menor do que os mosquitos comuns, é preto com listras brancas no
+                                        tronco, na cabeça e nas pernas. Suas asas são translúcidas e o ruído que
+                                        produzem é praticamente inaudível ao ser humano.</p>
+                                    <p>O macho, como de qualquer espécie, alimenta-se exclusivamente de frutas. A fêmea,
+                                        no entanto, necessita de sangue para o amaduremento dos ovos que são depositados
+                                        separadamente nas paredes internas dos objetos, próximos a superfícies de água
+                                        limpa, local que lhes oferece melhores condições de sobrevivência. No momento da
+                                        postura são brancos, mas logo se tornam negros e brilhantes.</p>
+                                    <p>Em média, cada mosquito vive em torno de 30 dias e a fêmea chega a colocar entre
+                                        150 e 200 ovos. Se forem postos por uma fêmea contaminada pelo vírus da dengue,
+                                        ao completarem seu ciclo evolutivo, transmitirão a doença.</p>
+                                    <p>Os ovos não são postos na água, e sim milímetros acima de sua superfície,
+                                        principalmente em recipientes artificiais. Quando chove, o nível da água sobe,
+                                        entra em contato com os ovos que eclodem em pouco menos de 30 minutos. Em um
+                                        período que varia entre sete e nove dias, a larva passa por quatro fases até dar
+                                        origem a um novo mosquito: ovo, larva, pupa e adubo.</p>
+                                    <p>O Aedes aegypti põe seus ovos em recipientes como latas e garrafas vazias, pneus,
+                                        calhas, caixas d’água descobertas, pratos sob vasos de plantas ou qualquer outro
+                                        objeto que possa armazenar água da chuva. O mosquito pode procurar ainda
+                                        criadouro naturais, como bromélias, bambus e buracos em árvores.</p>
+                                    <p>É um mosquito urbano, embora tenha sido encontrado na zona rural, onde foram
+                                        levados em recipientes que continham ovos e larvas. Próprio das regiões tropical
+                                        e subtropical, não resiste a baixas temperaturas presentes em altitudes
+                                        elevadas.</p>
+                                    <p>Estudos demonstram que, uma vez infectada – e isso pode ocorrer numa única
+                                        inseminação –, a fêmea transmitirá o vírus por toda a vida, havendo a
+                                        possibilidade de, pelo menos, parte de suas descendentes já nascerem portadoras
+                                        do vírus.</p>
+                                    <p>As fêmeas preferem o sangue humano como fonte de proteína ao de qualquer outro
+                                        animal vertebrado. Atacam de manhãzinha ou ao entardecer. Sua saliva possui uma
+                                        substância anestésica, que torna quase indolor a picada. Tanto a fêmea quanto os
+                                        machos abrigam-se dentro das casas ou nos terrenos ao redor.</p>
+                                    <p><strong>fonte: https://mosquito.saude.es.gov.br/aedes-aedypti</strong></p>
+                                </article>
+
+                            </div>
+                        </div>
+
+                        <!--Tab Sintomas-->
+                        <div class="tab-pane fade" id="sintomas" role="tabpanel" aria-labelledby="sintomas-tab">
+                            <div class="tab-pane fade active show" id="sintomas" role="tabpanel"
+                                aria-labelledby="sintomas-tab">
+
+                                <article>
+                                    <h4 class="pt-3">Dengue</h4>
+                                    <h5>Sintomas</h5>
+                                    <p>Os principais sintomas da dengue são:</p>
+                                    <p>- Febre alta > 38.5ºC.</p>
+                                    <p>- Dores musculares intensas.</p>
+                                    <p>- Dor ao movimentar os olhos.</p>
+                                    <p>- Mal estar.</p>
+                                    <p>- Falta de apetite.</p>
+                                    <p>- Dor de cabeça.</p>
+                                    <p>- Manchas vermelhas no corpo.</p>
+                                    <p><strong>fonte: https://www.saude.gov.br/saude-de-a-z/dengue</strong></p>
+                                </article>
+
+                            </div>
+                        </div>
+
+                        <!--Tab Cadastro-->
+                        <div class="tab-pane fade" id="cadastro" role="tabpanel" aria-labelledby="cadastro-tab">
+                            <div class="tab-pane fade active show" id="cadastro" role="tabpanel"
+                                aria-labelledby="cadastro-tab">
+
+                                <div class="form-group pt-3 ">
+                                    <label for="nome">Nome</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text bg-white border-right-0"><i
+                                                    class="fas fa-user"></i></span>
+                                        </div>
+                                        <input type="nome" class="form-control border-left-0" id="nome"
+                                            placeholder="Insira seu nome completo">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="email">E-mail</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text bg-white border-right-0"><i
+                                                    class="fas fa-envelope"></i></span>
+                                        </div>
+                                        <input type="email" class="form-control border-left-0" id="email"
+                                            placeholder="Insira seu e-mail">
+                                    </div>
+                                </div>
+
+                                <form>
+                                    <div class="row">
+                                        <div class="col">
+                                            <label for="cpf">CPF</label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text bg-white border-right-0"><i
+                                                            class="fas fa-user"></i></span>
+                                                </div>
+                                                <input type="cpf" class="form-control border-left-0" id="cpf"
+                                                    placeholder="Insira seu CPF">
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <label for="rg">RG</label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text bg-white border-right-0"><i
+                                                            class="fas fa-user"></i></span>
+                                                </div>
+                                                <input type="rg" class="form-control border-left-0" id="rg"
+                                                    placeholder="Insira seu RG">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+
+                                <div class="form-group">
+                                    <label for="endereco">Endereço</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text bg-white border-right-0"><i
+                                                    class="fas fa-home"></i></span>
+                                        </div>
+                                        <input type="endereco" class="form-control border-left-0" id="endereco"
+                                            placeholder="Insira seu Endereço">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <label for="telefone">Telefone</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text bg-white border-right-0"><i
+                                                        class="fas fa-phone"></i></span>
+                                            </div>
+                                            <input type="telefone" class="form-control border-left-0" id="telefone"
+                                                placeholder="Insira seu Telefone">
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <label for="cidade">Cidade</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text bg-white border-right-0"><i
+                                                        class="fas fa-city"></i></span>
+                                            </div>
+                                            <input type="cidade" class="form-control border-left-0" id="cidade"
+                                                placeholder="Insira sua Cidade">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+
+                                    <div class="col">
+                                        <label for="bairro">Bairro</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text bg-white border-right-0"><i
+                                                        class="fas fa-city"></i></span>
+                                            </div>
+                                            <input type="bairro" class="form-control border-left-0" id="bairro"
+                                                placeholder="Insira seu Bairro">
+                                        </div>
+                                    </div>
+
+                                    <div class="col">
+                                        <label for="estado">Estado</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text bg-white border-right-0"><i
+                                                        class="fas fa-city"></i></span>
+                                            </div>
+                                            <input type="estado" class="form-control border-left-0" id="estado"
+                                                placeholder="Insira seu Estado">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <button type="button" onclick="salvarDadosUsuario()" class="btn btn-primary mt-2"
+                                    id="gravarCadastro">Gravar</button>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+
+        </article>
+    </section>
+</div>
+
+    <script src="./asserts/lib/jquery/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="./asserts/lib/bootstrap/bootstrap.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.min.js"></script>
+
+    <script src="./asserts/lib/fontawesome/js/all.min.js"></script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    
+    <script src="https://www.gstatic.com/firebasejs/7.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.10.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.10.0/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.10.0/firebase-analytics.js"></script>
+
+    <script src="./asserts/js/firebase-app.config.js"></script>
+    <script src="./asserts/js/services/local-storage.services.js"></script>
+    <script src="./asserts/js/services/fire-base-database.services.js"></script>
+    <script src="./asserts/js/services/fire-base-storage.services.js"></script>
+    <script src="./asserts/js/controllers/zera-dengue.controller.js"></script>
+
+</body>
+
+</html>

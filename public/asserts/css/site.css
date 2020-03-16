@@ -1,0 +1,31 @@
+html, body{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background: #2980B9;
+    background: -webkit-linear-gradient(to right, #FFFFFF, #6DD5FA, #2980B9);
+    background: linear-gradient(to right, #FFFFFF, #6DD5FA, #2980B9);
+}
+.btn-face {
+    color: #fff;
+    background-color: #3b5998;
+    border-color: #3b5998;
+}
+.btn-face:hover{
+    color: #fff;
+    background-color: #2d4477;
+    border-color: #2d4477;
+}
+.btn-google {
+    color: #fff;
+    background-color: #D0413F;
+    border-color: #D0413F;
+}
+.btn-google:hover {
+    color: #fff;
+    background-color: rgb(165, 52, 50);
+    border-color: rgb(165, 52, 50);
+}
+.cursor{
+    cursor: pointer;
+}
