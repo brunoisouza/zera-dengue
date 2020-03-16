@@ -17,4 +17,3 @@ Se você gostou do projeto Zer@Dengue, dê uma estrela ;)
 -   JavaScript
 -   Bootstrap
 -   FireBase
--   toastr notification
